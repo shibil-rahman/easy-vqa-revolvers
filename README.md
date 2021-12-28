@@ -87,3 +87,6 @@ In addition to the training script, we have three other files:
 - `model.py`, where the model architecture is specified
 - `prepare_data.py`, which reads and processes the data, either using the
   [easy-vqa package](https://pypi.org/project/easy-vqa/) or a custom data directory
+
+
+edit done
