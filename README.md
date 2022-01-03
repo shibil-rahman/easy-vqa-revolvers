@@ -8,9 +8,8 @@ We are trying to run our own databse to easy-vqa system
 First, clone the repo and install the dependencies:
 
 ```shell
-git clone https://github.com/vzhou842/easy-VQA-keras.git
-cd easy-VQA-keras
-pip install -r requirements.txt
+git clone https://github.com/shibil-rahman/easy-vqa-revolvers.git
+cd easy-vqa-revolvers/
 ```
 
 To run the model,
