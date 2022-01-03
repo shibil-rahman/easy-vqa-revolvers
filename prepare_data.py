@@ -7,24 +7,22 @@ import numpy as np
 
 def setup(use_data_dir):
   print('\n--- Reading questions...')
-  if 1:
-    # Read data from data/ folder
-    def read_questions(path):
-      with open(path, 'r') as file:
+  # Read data from json file
+  def read_questions(path):
+    with open(path, 'r') as file:
         qs = json.load(file)
-      texts = [q[0] for q in qs]
-      answers = [q[1] for q in qs]
-      image_ids = [q[2] for q in qs]
-      return (texts, answers, image_ids)
-    train_qs, train_answers, train_image_ids = read_questions('convertcsv.json')
-    test_qs, test_answers, test_image_ids = read_questions('convertcsv.json')
+    texts = [q[0] for q in qs]
+    answers = [q[1] for q in qs]
+    image_ids = [q[2] for q in qs]
+    return (texts, answers, image_ids)
+  train_qs, train_answers, train_image_ids = read_questions('convertcsv.json')
+  test_qs, test_answers, test_image_ids = read_questions('convertcsv.json')
   print(f'Read {len(train_qs)} training questions and {len(test_qs)} testing questions.')
 	
   print('\n--- Reading answers...')
-  if 1:
-    # Read answers from data/ folder
-	  with open('answers.txt', 'r') as file:
-	    all_answers = [a.strip() for a in file]
+  # Read answers from answers.txt
+  with open('answers.txt', 'r') as file:
+    all_answers = [a.strip() for a in file]
   num_answers = len(all_answers)
   print(f'Found {num_answers} total answers:')
   print(all_answers)
@@ -43,17 +41,16 @@ def setup(use_data_dir):
       ims[image_id] = load_and_proccess_image(image_path)
     return ims
 	
-  if 1:
     # Read images from data/ folder
-    def extract_paths(dir):
-      paths = {}
-      for filename in os.listdir(dir):
+  def extract_paths(dir):
+    paths = {}
+    for filename in os.listdir(dir):
         if filename.endswith('.png'):
-          image_id = int(filename[:-4])
-          paths[image_id] = os.path.join(dir, filename)
-      return paths
+            image_id = int(filename[:-4])
+            paths[image_id] = os.path.join(dir, filename)
+    return paths
 
-    train_ims = read_images(extract_paths('images'))
+  train_ims = read_images(extract_paths('images'))
   test_ims  = read_images(extract_paths('images'))
   im_shape = train_ims[0].shape
   print(f'Read {len(train_ims)} training images and {len(test_ims)} testing images.')
@@ -63,7 +60,7 @@ def setup(use_data_dir):
   tokenizer = Tokenizer()
   tokenizer.fit_on_texts(train_qs)
 
-	# We add one because the Keras Tokenizer reserves index 0 and never uses it.
+    # We add one because the Keras Tokenizer reserves index 0 and never uses it.
   vocab_size = len(tokenizer.word_index) + 1
   print(f'Vocab Size: {vocab_size}')
   print(tokenizer.word_index)
