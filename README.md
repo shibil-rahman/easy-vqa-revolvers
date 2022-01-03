@@ -1,9 +1,6 @@
-# easy-VQA-keras
+# easy-VQA-evolvers
 
-A Keras implementation of a simple Visual Question Answering (VQA) architecture, using the [easy-VQA](https://github.com/vzhou842/easy-VQA) dataset.
-
-Methodology described in the official [blog post](https://victorzhou.com/blog/easy-vqa/). See [easy-VQA featured on the official VQA site](https://visualqa.org/external.html)!
-
+We are trying to run our own databse to easy-vqa system
 ## Usage
 
 ### Setup and Basic Usage
@@ -61,32 +58,3 @@ used to train a 99.5% accuracy model used in the following [live demo](https://e
 Furthermore, instead of using the official [easy-vqa package](https://pypi.org/project/easy-vqa/), you generate your own dataset using [the easy-VQA repo](https://github.com/vzhou842/easy-VQA) and use that instead.
 After following the instructions in that repo, just copy the `/data` folder into
 the root directory of this repository, so that your files look like this:
-
-```shell
-easy-VQA-keras/
-├── data/
-  ├── answers.txt
-  ├── test/
-  ├── train/
-├── analyze.py
-├── model.py
-├── prepare_data.py
-└── train.py
-```
-
-For the 99.5% accuracy model, we used a custom dataset generated with double the images/questions
-as the official dataset (set `NUM_TRAIN` and `NUM_TEST` to 8000 and 2000,
-respectively, for the `easy-VQA` repo).
-
-### Other Files
-
-In addition to the training script, we have three other files:
-- `analyze.py`, a script we used to debug our models. Run using a model weights
-  file, and produce statistics about model outputs and confusion matrices to
-  analyze model errors.
-- `model.py`, where the model architecture is specified
-- `prepare_data.py`, which reads and processes the data, either using the
-  [easy-vqa package](https://pypi.org/project/easy-vqa/) or a custom data directory
-
-
-edit done
